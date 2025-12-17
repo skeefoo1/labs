@@ -1,0 +1,128 @@
+﻿<Window x:Class="WpfApp1_Lab6.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Построитель предложений"
+        Height="600"
+        Width="800"
+        Background="LightGray"
+        FontFamily="Segoe UI"
+        FontSize="14">
+
+    <Grid Margin="10">
+
+        <!-- СТРОКИ -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <!-- ComboBox -->
+            <RowDefinition Height="Auto"/>
+            <!-- ListBox -->
+            <RowDefinition Height="Auto"/>
+            <!-- TextBox -->
+            <RowDefinition Height="Auto"/>
+            <!-- Кнопки -->
+            <RowDefinition Height="Auto"/>
+            <!-- Результат -->
+            <RowDefinition Height="Auto"/>
+            <!-- Кнопка сборки -->
+        </Grid.RowDefinitions>
+
+        <!-- КОЛОНКИ -->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- ComboBox -->
+        <ComboBox x:Name="comboSubject"
+                  Grid.Row="0"
+                  Grid.Column="0"
+                  Margin="5"
+                  Height="30"/>
+
+        <!-- ListBox -->
+        <ListBox x:Name="listVerb"
+                 Grid.Row="1"
+                 Grid.Column="0"
+                 Margin="5"
+                 Height="120">
+            <ListBoxItem Content="изучает"/>
+            <ListBoxItem Content="решает"/>
+            <ListBoxItem Content="объясняет"/>
+        </ListBox>
+
+        <!-- RadioButton -->
+        <GroupBox Header="Объект"
+                  Grid.Row="0"
+                  Grid.Column="1"
+                  Grid.RowSpan="2"
+                  Margin="5">
+            <StackPanel x:Name="radioPanel">
+                <RadioButton Content="алгебру"/>
+                <RadioButton Content="геометрию"/>
+                <RadioButton Content="формулы"/>
+            </StackPanel>
+        </GroupBox>
+
+        <!-- TextBox -->
+        <TextBox x:Name="textInput"
+                 Grid.Row="2"
+                 Grid.Column="0"
+                 Margin="5"
+                 Height="30"
+                 PreviewTextInput="TextInput_PreviewTextInput"/>
+
+        <!-- Кнопки -->
+        <StackPanel Grid.Row="3"
+                    Grid.Column="0"
+                    Orientation="Horizontal"
+                    Margin="5">
+
+            <Button Click="Add_Click" Width="110" Margin="5">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="➕"/>
+                    <TextBlock Text=" Добавить"/>
+                </StackPanel>
+            </Button>
+
+            <Button Content="Изменить"
+                    Width="110"
+                    Margin="5"
+                    Click="Edit_Click"/>
+
+            <Button Content="Удалить"
+                    Width="110"
+                    Margin="5"
+                    Click="Delete_Click"/>
+        </StackPanel>
+
+        <!-- РЕЗУЛЬТАТ -->
+        <Border Grid.Row="4"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Margin="5"
+                Padding="10"
+                Background="White"
+                BorderBrush="Gray"
+                BorderThickness="1">
+
+            <ScrollViewer Height="50">
+                <Label x:Name="labelResult"
+                       FontSize="18"
+                       FontWeight="Bold"
+                       HorizontalContentAlignment="Center"
+                       VerticalContentAlignment="Center"/>
+            </ScrollViewer>
+
+        </Border>
+
+        <!-- КНОПКА СБОРКИ -->
+        <Button Content="Собрать предложение"
+                Grid.Row="5"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Height="45"
+                Margin="5"
+                Click="BuildSentence_Click"/>
+
+    </Grid>
+</Window>
